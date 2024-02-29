@@ -1,6 +1,6 @@
 require 'native'
 require 'pixi/pixi'
-require "map"
+require 'map'
 
 class Game
   include PIXI
@@ -14,7 +14,7 @@ class Game
     @app.add_child @fps_label
   end
 
-  def game_loop(delta)
+  def game_loop(_delta)
     @fps_label.text = "fps: #{@app.fps}"
   end
 end
