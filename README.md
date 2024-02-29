@@ -1,24 +1,12 @@
-# README
+# MMO on Rails
+This project is an attempt to make a mmorpg maker platform. Using mostly Ruby.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Client game logic is being developed in Ruby and transpiled to javascript 
+by [Opal](https://opalrb.com/) when executing `bin/dev`, only being needed to refresh the window. Graphics 
+are being made by wrapping [PIX.js](https://pixijs.com/) lib in Opal
 
-Things you may want to cover:
+Server game is still to be made and is supposed to have acess to similar data but skiping render phase and visuals.
+It's supposed to use It to reinforce rules and validate actions
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+This content is released under the (http://opensource.org/licenses/MIT) MIT License.
