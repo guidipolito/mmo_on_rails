@@ -1,22 +1,21 @@
 require 'native'
-require 'pixi/pixi.rb'
+require 'pixi/pixi'
+require "map"
 
 class Game
   include PIXI
   def initialize
-    @app = PIXI::Application.new("#1099bb")
-    25.times do |i|
-      texture = @app.load_texture "https://pixijs.com/assets/bunny.png"
-      bunny = PIXI::Sprite.new(texture)
-      bunny.x = (i % 5) * 40
-      bunny.y = (i / 5).floor * 40
-      @app.add_child bunny
-    end
-    @app.on_update &method(:game_loop)
+    @app = PIXI::Application.new('#1099bb')
+    @tick = 0
+    @app.on_update { @tick += 1 }
+    @app.on_update(&method(:game_loop))
+    @fps_label = PIXI::Text.new
+    @map = Map.new @app
+    @app.add_child @fps_label
   end
 
   def game_loop(delta)
-    @app.container.rotation += 0.2 * delta
+    @fps_label.text = "fps: #{@app.fps}"
   end
 end
 

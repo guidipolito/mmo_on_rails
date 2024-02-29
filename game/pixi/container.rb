@@ -1,13 +1,7 @@
 module PIXI
-  class Container
-    extend Native::Helpers
-    native_accessor :x
-    native_accessor :y
-    native_accessor :rotation
-    attr_reader :native
-
-    def initialize(texture)
-      @native = `new PIXI.Container(#{texture})`
+  class Container < PIXI::Movable
+    def initialize()
+      @native = `new PIXI.Container()`
     end
 
     def add_child(obj)
