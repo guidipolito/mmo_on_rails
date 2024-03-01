@@ -9,7 +9,7 @@ module PIXI
       @app = Native `new PIXI.Application({ background: #{color} });`
       @app.resizeTo(`window`) if fullscreen
       @app.ticker.maxFPS = 120
-      @app[:view]
+      @view = @app[:view]
     end
 
     def add_child(obj)

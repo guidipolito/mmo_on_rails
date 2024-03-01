@@ -1,4 +1,4 @@
-
+require 'opal'
 require 'pixi/pixi'
 require 'element'
 class MapEditor
