@@ -15,7 +15,7 @@ module PIXI
         @texture = PIXI::Texture.new(url, @frame)
       end
 
-      @native = `new PIXI.Sprite(#{@texture.native})`
+      @native = `new PIXI.Sprite(#{@texture.to_n})`
     end
 
     def set_frame(col, line)

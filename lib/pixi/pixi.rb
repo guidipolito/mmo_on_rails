@@ -1,14 +1,14 @@
 require 'native'
 module PIXI
-  class Movable
+  class Movable 
     extend Native::Helpers
+    include Native::Wrapper
     native_accessor :x
     native_accessor :y
     native_accessor :rotation
     native_accessor :scale
     native_accessor :width
     native_accessor :height
-    attr_reader :native
   end
 end
 require_relative 'rectangle'

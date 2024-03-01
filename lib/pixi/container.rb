@@ -5,7 +5,6 @@ module PIXI
     end
 
     def add_child(obj)
-      @native.JS.addChild obj.native
-    end
+      @native.JS.addChild obj.to_n end
   end
 end

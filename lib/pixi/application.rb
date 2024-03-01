@@ -1,4 +1,3 @@
-require 'element'
 require 'native'
 
 module PIXI
@@ -7,13 +6,16 @@ module PIXI
 
     def initialize(color, fullscreen = false)
       @app = Native `new PIXI.Application({ background: #{color} });`
-      @app.resizeTo(`window`) if fullscreen
-      @app.ticker.maxFPS = 120
+      if fullscreen
+        @app.resizeTo = `window`
+        @app.resize
+      end
+      @app.ticker.maxFPS=60
       @view = @app[:view]
     end
 
     def add_child(obj)
-      @app.stage.addChild obj.native
+      @app.stage.addChild obj.to_n
     end
 
     def on_update(&block)

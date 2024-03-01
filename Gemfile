@@ -73,5 +73,5 @@ end
 
 gem "opal", "~> 1.8"
 gem "opal-rails"
-
+gem "opal-jquery"
 gem "importmap-rails", "~> 2.0"
