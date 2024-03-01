@@ -6,6 +6,7 @@ class Element
   alias_native :show
   alias_native :hide
   alias_native :append_child, :appendChild
+  alias_native :add_child, :appendChild
 
   def initialize(selector)
     @native = `document.querySelector(#{selector})`

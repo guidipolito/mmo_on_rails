@@ -1,3 +1,4 @@
+require 'native'
 module PIXI
   class Movable
     extend Native::Helpers

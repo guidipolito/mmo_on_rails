@@ -5,7 +5,8 @@ require 'map'
 class Game
   include PIXI
   def initialize
-    @app = PIXI::Application.new('#1099bb')
+    @app = PIXI::Application.new('#1099bb', true)
+    Element.new('body').add_child @app.view
     @tick = 0
     @app.on_update { @tick += 1 }
     @app.on_update(&method(:game_loop))

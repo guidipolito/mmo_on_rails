@@ -1,0 +1,74 @@
+$primary: #5D5FEF;
+$primary-hover: #4F56BE;
+$bg: #080808;
+$text: #C3C6CD;
+$border-color: #424242;
+$font-title: 'Passion One', sans-serif;
+$mobile: 768px;
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; // 10px = 1 rem
+    font-family: 'Inter', sans-serif;
+}
+
+body{
+    background-color: $bg;
+    color: $text;
+    font-size: 1.6rem;
+    font-weight: 200;
+}
+
+main:not(.no_container){
+    width: 117.6rem;
+    max-width: calc(100% - 2rem);
+    margin: auto;
+}
+
+h1, h2, h3, h4{
+    font-family: $font-title;
+}
+
+input[type=submit], button, .btn{
+    &:not(.no-base){
+        display: inline-block;
+        background-color: $primary;
+        color: white;
+        transition: .15s ease-in-out;
+        border: none;
+        border-radius: 9px;
+        padding: 1.35rem;
+        font-size: 1.6rem;
+        cursor: pointer;
+        &:hover{
+            background-color: $primary-hover;
+        }
+    }
+}
+
+label{
+    display: block;
+    font-weight: normal;
+    margin-bottom: .8rem;
+}
+
+a{
+    color: $text;
+    &:hover{
+        color: $text;
+        text-shadow: 1px 1px 1px $primary;
+    }
+}
+canvas{
+  /* IE, only works on <img> tags */
+  -ms-interpolation-mode: nearest-neighbor;
+  /* Firefox */
+  image-rendering: crisp-edges;
+  /* Chromium + Safari */
+  image-rendering: pixelated;
+}

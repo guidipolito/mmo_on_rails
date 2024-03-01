@@ -1,3 +1,5 @@
 web: env RUBY_DEBUG_OPEN=true bin/rails server
 js: yarn build --watch
-js: yarn build:opal
+opal: yarn build:opal --watch
+opal_map: yarn build:map --watch
+css: yarn build:css --watch

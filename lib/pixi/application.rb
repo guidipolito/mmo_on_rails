@@ -3,12 +3,13 @@ require 'native'
 
 module PIXI
   class Application
-    attr_reader :container
+    attr_reader :container, :view
 
-    def initialize(color)
-      @app = Native `new PIXI.Application({ background: #{color}, resizeTo: window });`
+    def initialize(color, fullscreen = false)
+      @app = Native `new PIXI.Application({ background: #{color} });`
+      @app.resizeTo(`window`) if fullscreen
       @app.ticker.maxFPS = 120
-      Element.new('body').append_child @app[:view]
+      @app[:view]
     end
 
     def add_child(obj)

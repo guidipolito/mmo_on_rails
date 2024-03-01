@@ -1,5 +1,23 @@
-<div class="map-editor__selection">
-</div>
-<div class="mapr-editor__map">
+<div class="map-editor">
+  <header class="header">
+    <h1>Map editor</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Controls</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="no_container">
+    <div class="map-editor__selection">
+      <div id="map_editor__tiles">
+        <h2>Tiles</h2>
+      </div>
+      <div>
+        <h2>Layers</h2>
+      </div>
+    </div>
+    <div class="map-editor__map">
+    </div>
+  </main>
 </div>
 <%= javascript_include_tag "map_editor", "data-turbo-track": "reload" %>
