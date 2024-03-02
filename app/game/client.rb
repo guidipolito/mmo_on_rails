@@ -12,7 +12,7 @@ class Game
     @app.on_update { @tick += 1 }
     @app.on_update(&method(:game_loop))
     @fps_label = PIXI::Text.new ''
-    #@map = Map.new @app
+    @map = Map.new @app
     @app.add_child @fps_label
   end
 

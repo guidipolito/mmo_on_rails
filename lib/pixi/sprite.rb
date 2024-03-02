@@ -1,9 +1,10 @@
 module PIXI
   class Sprite < PIXI::Movable
     def initialize(url, options = {})
-      options = { frame_width: 32, frame_height: 32, texture: false }.merge(options)
+      defaults = { frame_width: 32, frame_height: 32, texture: false }
+      options = defaults.merge options
       if url.is_a? Hash
-        options = { frame_width: 32, frame_height: 32, texture: false }.merge(url)
+        options = defaults.merge(url)
         url = false
       end
 

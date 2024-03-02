@@ -1,6 +1,6 @@
 require 'native'
 module PIXI
-  class Movable 
+  class Movable
     extend Native::Helpers
     include Native::Wrapper
     native_accessor :x
@@ -9,6 +9,9 @@ module PIXI
     native_accessor :scale
     native_accessor :width
     native_accessor :height
+    def destroy(options)
+      @native.JS.destroy(options)
+    end
   end
 end
 require_relative 'rectangle'

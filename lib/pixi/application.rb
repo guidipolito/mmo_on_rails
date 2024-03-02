@@ -2,32 +2,37 @@ require 'native'
 
 module PIXI
   class Application
+    extend Native::Helpers
     attr_reader :container, :view
 
+    native_accessor :resizeTo
+    native_accessor :resize
+    def fps = @native.ticker.FPS
+    def stage = @native.stage
+    def to_n = @native.to_n
+
     def initialize(color, fullscreen = false)
-      @app = Native `new PIXI.Application({ background: #{color} });`
+      @native = Native `new PIXI.Application({ background: #{color} });`
       if fullscreen
-        @app.resizeTo = `window`
-        @app.resize
+        @native.resizeTo = `window`
+        @native.resize
       end
-      @app.ticker.maxFPS=60
-      @view = @app[:view]
+      @native.ticker.maxFPS = 60
+      @view = @native[:view]
     end
 
+
     def add_child(obj)
-      @app.stage.addChild obj.to_n
+      @native.stage.addChild obj.to_n
+      obj
     end
 
     def on_update(&block)
-      @app.ticker.add block
-    end
-
-    def fps
-      @app.ticker.FPS
+      @native.ticker.add block
     end
 
     def max_fps=(fps)
-      @app.ticker.maxFPS = fps
+      @native.ticker.maxFPS = fps
     end
   end
 end
