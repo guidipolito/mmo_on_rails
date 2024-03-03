@@ -128,7 +128,7 @@ class TileSelector
 
   def setup_cursor_events
     @app.stage.eventMode = 'static'
-    @app.stage.on('mousemove') do
+    @app.stage.on('mousemove') do |evt|
       evt = Native evt
       @hover = [(evt.globalX / @tilesize).to_i, (evt.globalY / @tilesize).to_i]
       @selection_end = @hover.map(&:clone) if @pressing_down && @hover
