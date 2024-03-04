@@ -1,69 +1,109 @@
-$primary: #5D5FEF;
-$primary-hover: #4F56BE;
-$bg: #080808;
-$text: #C3C6CD;
-$border-color: #424242;
-$font-title: 'Passion One', sans-serif;
+$primary: var(--primary);
+$bg: var(--bg);
+$bg2: var(--bg2);
+$text: var(--text);
+$border: var(--border);
+$font-title: var(--font-title);
 $mobile: 768px;
 
+:root{
+  --primary: #8CB4FF;
+  --bg: #080808;
+  --bg2: #393939;
+  --text: #C3C6CD;
+  --border: solid 1px white;
+  --font-title: 'Passion One', sans-serif;
+}
 *, *::after, *::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%; // 10px = 1 rem
-    font-family: 'Inter', sans-serif;
+  font-size: 62.5%; // 10px = 1 rem
+  font-family: 'Inter', sans-serif;
+  height: 100%;
 }
 
 body{
-    background-color: $bg;
-    color: $text;
-    font-size: 1.6rem;
-    font-weight: 200;
+  background-color: $bg;
+  color: $text;
+  font-size: 1.6rem;
+  font-weight: 200;
+  min-height: 100%;
+  &.light{
+    --bg: #D7D2B9;
+    --text: #555248;
+  }
 }
 
-main:not(.no_container){
-    width: 117.6rem;
-    max-width: calc(100% - 2rem);
-    margin: auto;
+.container{
+  width: 117.6rem;
+  max-width: calc(100% - 2rem);
+  margin: auto;
+  &--small{
+    max-width: 50rem;
+  }
 }
 
 h1, h2, h3, h4{
-    font-family: $font-title;
+  font-family: $font-title;
+}
+
+input{
+  background-color: $bg2;
+  color: white;
+  font-size: inherit;
+  line-height: 1.5;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.3rem;
+  outline: none;
+  &:focus{
+    box-shadow: 0 0 5px $primary;
+  }
 }
 
 input[type=submit], button, .btn{
-    &:not(.no-base){
-        display: inline-block;
-        background-color: $primary;
-        color: white;
-        transition: .15s ease-in-out;
-        border: none;
-        border-radius: 9px;
-        padding: 1.35rem;
-        font-size: 1.6rem;
-        cursor: pointer;
-        &:hover{
-            background-color: $primary-hover;
-        }
+  &:not(.no-base){
+    display: inline-block;
+    background-color: $text;
+    color: $bg;
+    transition: .15s ease-in-out;
+    border: none;
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    font-weight: bold;
+    &:hover{
+      background-color: white;
     }
+  }
+  &.btn--danger{
+    background-color: #b53030;
+    &:hover{
+      background-color: #e84c4c;
+    }
+  }
+}
+
+.btn-container{
+  display: flex; 
+  gap: 1rem;
 }
 
 label{
-    display: block;
-    font-weight: normal;
-    margin-bottom: .8rem;
+  display: block;
+  font-weight: normal;
+  margin-bottom: .8rem;
 }
 
 a{
-    color: $text;
-    &:hover{
-        color: $text;
-        text-shadow: 1px 1px 1px $primary;
-    }
+  color: inherit;
 }
+
 canvas{
   /* IE, only works on <img> tags */
   -ms-interpolation-mode: nearest-neighbor;

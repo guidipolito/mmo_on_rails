@@ -1,0 +1,49 @@
+<%= form_with(
+  model: tileset, 
+  id: tileset.id ? 'tileset-edit' : 'tileset-create',
+  data: { 
+    id: tileset.id,
+    url: url_for(tileset.image)
+  }
+) do |form| %>
+  <div>
+    <% if tileset.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(tileset.errors.count, "error") %> prohibited this tileset from being saved:</h2>
+
+        <ul>
+          <% tileset.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :name, style: "display: block" %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div>
+      <%= form.label :tilesize, style: "display: block" %>
+      <%= form.number_field :tilesize %>
+    </div>
+
+    <div>
+      <%= form.label :image, style: "display: block" %>
+      <%= form.file_field :image, accept: ["image/png", "image/jpg" "image/jpeg"]  %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  </div>
+  <div id="tileset-edit-canvas">
+    <ul class="map-editor__selection__tabs">
+      <li class="on">under</li>
+      <li class="">mid</li>
+      <li class="">over</li>
+      <li class="">colisions</li>
+    </ul>
+  </div>
+<% end %>

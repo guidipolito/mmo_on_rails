@@ -1,0 +1,19 @@
+<div id="<%= dom_id tileset %>" 
+  class="tilesets__item" 
+  <% unless tileset.image.blank? %>
+  style="background-image:  linear-gradient(to bottom, var(--bg), transparent 280%), url('<%= url_for(tileset.image.variant(:thumb))%>') "
+  <% end %>
+  >
+  <h2>
+    <%= tileset.name %>
+  </h2>
+
+  <p>
+    <strong>Tilesize:</strong>
+    <%= tileset.tilesize %>px
+  </p>
+  <div class="btn-container">
+  <%= link_to('edit', edit_tileset_path(tileset), class: 'btn') %>
+  <%= button_to('delete', tileset_url(tileset), class: 'btn--danger', method: :delete) %>
+  </div>
+</div>

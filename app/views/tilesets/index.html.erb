@@ -1,0 +1,10 @@
+<p style="color: lightgreen"><%= notice %></p>
+
+<%= content_for(:page_title) {"Tilesets"} %>
+
+<main class="container container--small" id="tilesets">
+  <%= link_to "New tileset", new_tileset_path, class: "tilesets__item tilesets__item--new" %>
+  <% @tilesets.each do |tileset| %>
+    <%= render tileset %>
+  <% end %>
+</main>

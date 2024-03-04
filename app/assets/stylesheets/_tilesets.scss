@@ -1,0 +1,24 @@
+#tilesets{
+  margin-top: 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  .tilesets__item{
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    border: $border;
+    padding: 3rem;
+    min-width: 24rem;
+    height: 16rem;
+    background-size: cover;
+    &--new{
+      border-style: dashed;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+}

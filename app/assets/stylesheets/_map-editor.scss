@@ -1,0 +1,58 @@
+.map-editor{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  main{
+    display: flex;
+    height: 100%;
+  }
+  &__map{
+    flex: 1;
+  }
+  &__selection{
+    width: 300px;
+    border-right: $border;
+    display: flex;
+    flex-direction: column;
+    resize: horizontal;
+    &-block{
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      &:first-child{
+        border-bottom: $border;
+        resize: vertical;
+      }
+      &__title{
+        padding: 0.8rem 1.5rem;
+      }
+      &__content{
+        overflow: auto;
+        flex: 1;
+      }
+    }
+    &__tabs{
+      border-top: $border;
+      border-bottom: $border;
+      overflow-x: auto;
+      display: flex;
+      list-style: none;
+      >*{
+        cursor: pointer;
+        padding: 0.8rem 2rem;
+        transition: .3s ease;
+        &.on{
+          background-color: $text;
+          color: $bg;
+          font-weight: bold;
+          padding: 0.8rem 2.5rem;
+          position: sticky;
+          left: 0;
+        }
+        &:not(.on):hover{
+          background-color: $bg2;
+        }
+      }
+    }
+  }
+}
