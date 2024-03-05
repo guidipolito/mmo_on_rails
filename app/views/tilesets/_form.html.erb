@@ -3,7 +3,7 @@
   id: tileset.id ? 'tileset-edit' : 'tileset-create',
   data: { 
     id: tileset.id,
-    url: url_for(tileset.image)
+    url: tileset.image.attached? ? url_for(tileset.image) : '',
   }
 ) do |form| %>
   <div>
@@ -34,10 +34,13 @@
       <%= form.file_field :image, accept: ["image/png", "image/jpg" "image/jpeg"]  %>
     </div>
 
+    <%= form.text_field :tiles, hidden: true %>
+
     <div>
       <%= form.submit %>
     </div>
   </div>
+  <% if tileset.id %>
   <div id="tileset-edit-canvas">
     <ul class="map-editor__selection__tabs">
       <li class="on">under</li>
@@ -46,4 +49,5 @@
       <li class="">colisions</li>
     </ul>
   </div>
+  <% end %>
 <% end %>

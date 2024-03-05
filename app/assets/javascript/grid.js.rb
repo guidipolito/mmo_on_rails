@@ -1,6 +1,7 @@
 class Grid
   extend Native::Helpers
-
+  attr_reader :lines
+  attr_reader :cols
   # == Definition lists
   #
   # app::  PIXI::Applicatiion, the canvas
@@ -33,6 +34,7 @@ class Grid
     @lines = 0
     @cols = 0
     @grid_container.add_child @graphics
+    @on_load_method = false
     @app.on_update do
       draw_grid
     end
@@ -50,7 +52,7 @@ class Grid
     @map_texture = PIXI::Texture.new(url)
     @map_texture.on_load(&method(:after_load))
     # check if it was loaded right away
-    return unless @map_texture.img_width != 0
+    return unless img_width != 0
 
     after_load
   end
@@ -58,17 +60,24 @@ class Grid
   def update_grid
     return unless @map_texture
 
-    @cols = (@map_texture.img_width / @tilesize).ceil
-    @lines = (@map_texture.img_height / @tilesize).ceil
+    @cols = (img_width / @tilesize).ceil
+    @lines = (img_height / @tilesize).ceil
   end
 
   def after_load(*_args)
-    width = @map_texture.img_width
-    height = @map_texture.img_height
+    width = img_width
+    height = img_height
     @app.view.width = width
     @app.view.height = height
     @sprite = @tilemap_container.add_child PIXI::Sprite.new(texture: @map_texture)
     update_grid
+    if @on_load_method != false
+      @on_load_method.call
+    end
+  end
+
+  def on_load(&block)
+    @on_load_method = block
   end
 
   def draw_rect(cord, size = [1, 1])
@@ -128,6 +137,8 @@ class Grid
     selection_style(selection_range) if @selection
   end
 
+  def on_selection_end; end
+
   def setup_cursor_events
     @app.stage.eventMode = 'static'
     @app.stage.on('mousemove') do |evt|
@@ -136,6 +147,7 @@ class Grid
       @selection_end = @hover.map(&:clone) if @pressing_down && @hover
     end
     @app.stage.on('mouseout') do
+      on_selection_end if @pressing_down
       @pressing_down = false
       @hover = false
     end
@@ -146,6 +158,7 @@ class Grid
     end
     @app.stage.on('mouseup') do
       @pressing_down = false
+      on_selection_end
     end
   end
 
@@ -154,5 +167,13 @@ class Grid
   def tilesize=(n)
     @tilesize = n
     update_grid
+  end
+
+  def img_width
+    @map_texture.img_width
+  end
+
+  def img_height
+    @map_texture.img_height
   end
 end

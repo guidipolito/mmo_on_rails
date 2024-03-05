@@ -10,10 +10,6 @@ class Layout
 end
 
 # Tiler Selector.
-# Create the tilemap and manipulate selection
- class TileData
- end
- 
  class TilesetData
    def initialize
      @name = ''
